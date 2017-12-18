@@ -1,0 +1,37 @@
+@import '../../variables';
+
+:host {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(41, 41, 41, 0.8);
+    //color:white;
+    
+    .footer{
+        margin-left: 0%;
+        margin-right: 0%;
+        padding:0%;
+        //position: absolute;
+        bottom: 0;
+        height: 10%;
+        line-height: 60px;
+       
+        width:$media-screen-m;
+        color:white;
+    }
+
+    .container{
+       
+        margin-left: 0%;
+        margin-right: 0%;
+        margin-top: 5%;
+        margin-bottom: 5%;
+        padding-left: 16px;
+        padding-right: 16px;
+
+
+        .socialmedia{
+            text-align:center;
+        }
+    }
+}
