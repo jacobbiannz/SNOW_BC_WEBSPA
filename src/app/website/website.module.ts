@@ -7,7 +7,7 @@ import { WebsiteRoutingModule } from './website-routing.module';
 import { WebsiteComponent } from './website.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
-import { DestinationComponent } from './destination/destination.component';
+
  
 @NgModule({
     imports: [
@@ -16,6 +16,6 @@ import { DestinationComponent } from './destination/destination.component';
         //TranslateModule,
         NgbDropdownModule.forRoot()
     ],
-    declarations: [WebsiteComponent, HeaderComponent, FooterComponent, DestinationComponent]
+    declarations: [WebsiteComponent, HeaderComponent, FooterComponent]
 })
 export class WebsiteModule {}
