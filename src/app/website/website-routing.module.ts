@@ -10,6 +10,8 @@ const routes: Routes = [
             { path: '', redirectTo: 'home', pathMatch: 'full' },
             { path: 'home', loadChildren: './home/home.module#HomeModule' },
             { path: 'destination', loadChildren: './destination/destination.module#DestinationModule' },
+            { path: 'country/:cid/provience/:pid', loadChildren: './destination/provience/provience.module#ProvienceModule' }
+
             // { path: 'tables', loadChildren: './tables/tables.module#TablesModule' },
             // { path: 'forms', loadChildren: './form/form.module#FormModule' },
             // { path: 'bs-element', loadChildren: './bs-element/bs-element.module#BsElementModule' },

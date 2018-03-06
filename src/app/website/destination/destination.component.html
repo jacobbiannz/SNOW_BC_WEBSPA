@@ -23,11 +23,19 @@
 
     <div class="row destmaincity">
         <div class="col-md-6">
-            <h5>city1</h5>
+            <h5><li *ngFor="let provience of proviences1" routerLink="/country/{{selectedCountry.id}}/provience/{{provience.id}}" >{{provience.name}}</li></h5>
+            
         </div>
 
         <div class="col-md-6">
-            <h5>city2</h5>
+            <h5><li *ngFor="let provience of proviences2" routerLink="/country/{{selectedCountry.id}}/provience/{{provience.id}}" >{{provience.name}}</li></h5>
         </div>
+    <!--
+    </div>
+        <a *ngFor="let country of countries" (click)="select(category)">{{country.name}}</a>
+    <div>
+    -->
+    
+
     </div>
 </div>
