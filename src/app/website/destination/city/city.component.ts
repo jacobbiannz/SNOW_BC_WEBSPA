@@ -8,7 +8,6 @@ import { Time } from '@angular/common/src/i18n/locale_data_api';
 import { DestinationService } from '../destination.service';
 import { ConfigurationService } from '../../../shared/service/configuration.service';
 import { ICountry } from '../../../shared/model/country.model';
-import { ICity } from '../../../shared/model/city.model';
 import { ActivatedRoute } from '@angular/router';
 
 
@@ -17,10 +16,9 @@ import { ActivatedRoute } from '@angular/router';
     templateUrl: './provience.component.html',
     styleUrls: ['./provience.component.scss']
 })
-export class ProvienceComponent implements OnInit {
+export class CityComponent implements OnInit {
 
     provience : IProvience;
-    cities : ICity[];
 
     constructor(private destinationService: DestinationService,
                 private configurationService: ConfigurationService,
@@ -58,7 +56,6 @@ export class ProvienceComponent implements OnInit {
 
   loadData() {
         this.getProvience();
-        
   }
 
   getProvience(){
@@ -67,20 +64,7 @@ export class ProvienceComponent implements OnInit {
 
         this.destinationService.getProvience(countryId, provienceId).subscribe(provience => {
             this.provience = provience;
-            this.getCities();
         });
   }
-
-  getCities(){
-    let countryId = this.route.snapshot.paramMap.get('cid')
-    let provienceId = this.route.snapshot.paramMap.get('pid');
-
-    this.destinationService.getCities(countryId, provienceId).subscribe(cities => {
-        this.cities = cities;
-        
-    });
-}
-
-
 
 }

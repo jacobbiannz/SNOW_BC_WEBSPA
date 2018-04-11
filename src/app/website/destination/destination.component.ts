@@ -8,6 +8,8 @@ import { DestinationService } from './destination.service';
 import { ConfigurationService } from '../../shared/service/configuration.service';
 import { ICountry } from '../../shared/model/country.model';
 import { IProvience} from '../../shared/model/provience.model';
+import { IMonth } from '../../shared/model/month.model';
+
 import { RouterLink } from '@angular/router';
 
 @Component({
@@ -22,6 +24,7 @@ export class DestinationComponent implements OnInit {
     proviences1 : IProvience[];
     proviences2 : IProvience[];
     selectedCountry : ICountry;
+    months : IMonth[];
 
     constructor(private destinationService: DestinationService,
         private configurationService: ConfigurationService
@@ -58,7 +61,7 @@ export class DestinationComponent implements OnInit {
 
     loadData() {
         this.getCountries();
-        
+        this.getMonths();
     }
 
     getCountries() {
@@ -74,11 +77,31 @@ export class DestinationComponent implements OnInit {
     getProvices(countryId){
         this.destinationService.getProviences(countryId).subscribe(proviences => {
             this.proviences = proviences;
+            
+            // this.proviences.forEach((provience) => {
+            //     this.getCities(countryId, provience.id, provience);
+            // });
+
             let half = Math.ceil(proviences.length/2);
             this.proviences1 = proviences.slice(0, half);
-            console.log("----------------------------dataservice--" + proviences.length + "--dataservice------------------------");
+            //console.log("----------------------------dataservice--" + proviences.length + "--dataservice------------------------");
             this.proviences2 = proviences.slice(half, proviences.length);
-            console.log("----------------------------dataservice--" + half +'!'+ (proviences.length) + "--dataservice------------------------");
+           // console.log("----------------------------dataservice--" + half +'!'+ (proviences.length) + "--dataservice------------------------");
+            
+
+        });
+    }
+
+    // getCities(countryId, provienceId, provience : IProvience){
+    //     this.destinationService.getCities(countryId, provienceId).subscribe(cities => {
+    //         provience.topCities = cities.slice(0, 5);;
+            
+    //     })
+    // };
+
+    getMonths(){
+        this.destinationService.getMonths().subscribe(months => {
+            this.months = months;
         });
     }
 }

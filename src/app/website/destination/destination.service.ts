@@ -6,6 +6,7 @@ import { ConfigurationService } from '../../shared/service/configuration.service
 import { ICity } from '../../shared/model/city.model';
 import { IProvience } from '../../shared/model/provience.model';
 import { ICountry } from '../../shared/model/country.model';
+import { IMonth } from '../../shared/model/month.model';
 
 import 'rxjs/Rx';
 import { Observable } from 'rxjs/Observable';
@@ -18,6 +19,7 @@ export class DestinationService {
     private countryUrl: string = '';
     private provienceUrl: string = '';
     private cityUrl: string = '';
+    private monthUrl: string ='';
 
     constructor(private dataService: DataService, private configurationService: ConfigurationService) {
         this.configurationService.settingsLoaded$.subscribe(x => {
@@ -27,19 +29,6 @@ export class DestinationService {
             this.cityUrl = this.configurationService.serverSettings.cityUrl + '/citiences';
         });
     }
-
-    // getCatalog(pageIndex: number, pageSize: number, brand: number, type: number): Observable<ICatalog> {
-    //     let url = this.catalogUrl;
-    //     if (brand || type) {
-    //         url = this.catalogUrl + '/type/' + ((type) ? type.toString() : 'null') + '/brand/' + ((brand) ? brand.toString() : 'null');
-    //     }``
-
-    //     url = url + '?pageIndex=' + pageIndex + '&pageSize=' + pageSize;
-
-    //     return this.service.get(url).map((response: Response) => {
-    //         return response.json();
-    //     });
-    // }
 
     getCountries(): Observable<ICountry[]> {
         //console.log(this.countryUrl + '-----------------------country url-------------------------------');
@@ -55,6 +44,7 @@ export class DestinationService {
 
         this.provienceUrl = "http://localhost:61125/api/countries/" + countryId + "/proviences";
         return this.dataService.get(this.provienceUrl).map((response: Response) => {
+            console.log(this.countryUrl + '-----------------------provience response-------------------------------' + response.json());
             return response.json();
         });
     };
@@ -68,11 +58,23 @@ export class DestinationService {
         });
     };
 
-    /*
-    getCities(): Observable<IProvience[]> {
+    
+    getCities(countryId : string, provienceId : string): Observable<ICity[]> {
+        this.cityUrl = "http://localhost:61125/api/countries/" + countryId + "/proviences/" + provienceId + "/cities";
         return this.dataService.get(this.cityUrl).map((response: Response) => {
+           
             return response.json();
         });
     };
-    */
+
+    getMonths(): Observable<IMonth[]> {
+        //console.log(this.countryUrl + '-----------------------country url-------------------------------');
+        this.monthUrl = "http://localhost:61125/api/monthcollection";
+        return this.dataService.get(this.monthUrl).map((response: Response) => {
+            //console.log(response.json() + '-----------------------countres-------------------------------');
+            return response.json();
+        });
+
+    }
+    
 }

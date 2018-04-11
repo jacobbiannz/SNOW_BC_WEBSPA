@@ -1,5 +1,12 @@
-provience
+<div class="index">
+    <div class="index-inner">
+        <div *ngIf="provience">
+            {{provience.name}}
+        </div> 
 
-<div *ngIf="provience">
-    {{provience.name}}
+        <div>
+            <h5><li *ngFor="let city of cities" >{{city.name}}</li></h5>
+        </div>
+    </div>
 </div>
+

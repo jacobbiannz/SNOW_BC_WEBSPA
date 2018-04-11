@@ -74,16 +74,17 @@ ol.carousel-indicators {
         right: 0%;
         padding: 16px;
         max-width: $media-screen-m;
-        text-align: left;
+        text-align: left; 
     }
 
 }
 
 .homemain{
-    width: $media-screen-m;
+    width: $media-screen-m; 
     margin: auto;
     //padding: 16px;
-   
+    background-color: rgb(22, 21, 21);
+
     .homemainc1{
         padding: 16px;
         
@@ -95,7 +96,7 @@ ol.carousel-indicators {
     .homemainc2{
        
         padding: 16px 0px;
-        background-color: palevioletred;
+        background-color: paleturquoise;
         
         @media screen and (max-width: $media-screen-s){
             padding:16px; 
