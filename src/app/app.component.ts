@@ -27,7 +27,7 @@ export class AppComponent implements OnInit {
     }
 
     ngOnInit() {
-        console.log('app on init');
+        //console.log('app on init');
         //this.subscription = this.securityService.authenticationChallenge$.subscribe(res => this.Authenticated = res);
 
         //Get configuration from server environment variables:
@@ -36,6 +36,6 @@ export class AppComponent implements OnInit {
     }
 
     public setTitle(newTitle: string) {
-        this.titleService.setTitle('eShopOnContainers');
+        this.titleService.setTitle('SnowBC');
     }
 }

@@ -62,8 +62,8 @@ export class ProvienceComponent implements OnInit {
   }
 
   getProvience(){
-        let countryId = this.route.snapshot.paramMap.get('cid')
-        let provienceId = this.route.snapshot.paramMap.get('pid');
+        let countryId = this.route.snapshot.paramMap.get('countryid')
+        let provienceId = this.route.snapshot.paramMap.get('provienceid');
 
         this.destinationService.getProvience(countryId, provienceId).subscribe(provience => {
             this.provience = provience;
@@ -72,12 +72,11 @@ export class ProvienceComponent implements OnInit {
   }
 
   getCities(){
-    let countryId = this.route.snapshot.paramMap.get('cid')
-    let provienceId = this.route.snapshot.paramMap.get('pid');
+    let countryId = this.route.snapshot.paramMap.get('countryid')
+    let provienceId = this.route.snapshot.paramMap.get('provienceid');
 
     this.destinationService.getCities(countryId, provienceId).subscribe(cities => {
         this.cities = cities;
-        
     });
 }
 

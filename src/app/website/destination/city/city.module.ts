@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 //import { NgbCarouselModule } from '@ng-bootstrap/ng-bootstrap';
 
-import { CityRoutingModule } from './City-routing.module';
-import { CityComponent } from './City.component';
+import { CityRoutingModule } from './city-routing.module';
+import { CityComponent } from './city.component';
 import { DestinationService } from '../destination.service';
 
 @NgModule({

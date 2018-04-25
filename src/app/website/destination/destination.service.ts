@@ -44,7 +44,7 @@ export class DestinationService {
 
         this.provienceUrl = "http://localhost:61125/api/countries/" + countryId + "/proviences";
         return this.dataService.get(this.provienceUrl).map((response: Response) => {
-            console.log(this.countryUrl + '-----------------------provience response-------------------------------' + response.json());
+            //console.log(this.countryUrl + '-----------------------provience response-------------------------------' + response.json());
             return response.json();
         });
     };
@@ -67,11 +67,20 @@ export class DestinationService {
         });
     };
 
+    getCity(countryId : string, provienceId : string, cityId : string): Observable<ICity> {
+        this.cityUrl = "http://localhost:61125/api/countries/" + countryId + "/proviences/" + provienceId + "/cities/" + cityId;
+        return this.dataService.get(this.cityUrl).map((response: Response) => {
+           
+            return response.json();
+        });
+    };
+
+
     getMonths(): Observable<IMonth[]> {
         //console.log(this.countryUrl + '-----------------------country url-------------------------------');
         this.monthUrl = "http://localhost:61125/api/monthcollection";
         return this.dataService.get(this.monthUrl).map((response: Response) => {
-            //console.log(response.json() + '-----------------------countres-------------------------------');
+            console.log(response.json() + '-----------------------months-------------------------------');
             return response.json();
         });
 

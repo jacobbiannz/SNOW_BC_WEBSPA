@@ -9,16 +9,17 @@ import { DestinationService } from '../destination.service';
 import { ConfigurationService } from '../../../shared/service/configuration.service';
 import { ICountry } from '../../../shared/model/country.model';
 import { ActivatedRoute } from '@angular/router';
+import { ICity } from '../../../shared/model/city.model';
 
 
 @Component({
-    selector: 'provience',
-    templateUrl: './provience.component.html',
-    styleUrls: ['./provience.component.scss']
+    selector: 'city',
+    templateUrl: './city.component.html',
+    styleUrls: ['./city.component.scss']
 })
 export class CityComponent implements OnInit {
 
-    provience : IProvience;
+    city : ICity;
 
     constructor(private destinationService: DestinationService,
                 private configurationService: ConfigurationService,
@@ -55,15 +56,16 @@ export class CityComponent implements OnInit {
   }
 
   loadData() {
-        this.getProvience();
+        this.getCity();
   }
 
-  getProvience(){
-        let countryId = this.route.snapshot.paramMap.get('cid')
-        let provienceId = this.route.snapshot.paramMap.get('pid');
-
-        this.destinationService.getProvience(countryId, provienceId).subscribe(provience => {
-            this.provience = provience;
+  getCity(){
+        let countryId = this.route.snapshot.paramMap.get('countryid')
+        let provienceId = this.route.snapshot.paramMap.get('provienceid');
+        let cityId = this.route.snapshot.paramMap.get('cityid');
+console.log(cityId + "-----------------------------ttttt--------------------------------");
+        this.destinationService.getCity(countryId, provienceId, cityId).subscribe(city => {
+            this.city = city;
         });
   }
 

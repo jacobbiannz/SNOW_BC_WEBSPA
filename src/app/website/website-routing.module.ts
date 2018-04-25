@@ -10,8 +10,8 @@ const routes: Routes = [
             { path: '', redirectTo: 'home', pathMatch: 'full' },
             { path: 'home', loadChildren: './home/home.module#HomeModule' },
             { path: 'destination', loadChildren: './destination/destination.module#DestinationModule' },
-            { path: 'country/:cid/provience/:pid', loadChildren: './destination/provience/provience.module#ProvienceModule' }
-
+            { path: 'country/:countryid/provience/:provienceid', loadChildren: './destination/provience/provience.module#ProvienceModule' },
+            { path: 'country/:countryid/provience-c/:provienceid/city/:cityid', loadChildren: './destination/city/city.module#CityModule' },
             
             // { path: 'tables', loadChildren: './tables/tables.module#TablesModule' },
             // { path: 'forms', loadChildren: './form/form.module#FormModule' },
