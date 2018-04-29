@@ -4,6 +4,7 @@ import { NgbCarouselModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { DestinationRoutingModule } from './destination-routing.module';
 import { DestinationComponent } from './destination.component';
+import { DestinationService } from './destination.service';
 
 @NgModule({
     imports: [
@@ -13,6 +14,9 @@ import { DestinationComponent } from './destination.component';
     ],
     declarations: [
         DestinationComponent,
-    ]
+    ],
+    exports: [DestinationComponent],
+
+    providers: [DestinationService]
 })
 export class DestinationModule {}

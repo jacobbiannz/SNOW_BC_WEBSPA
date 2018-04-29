@@ -4,7 +4,7 @@ import { Router, NavigationEnd } from '@angular/router';
 import {trigger, state, style, animate, transition } from '@angular/animations';
 
 @Component({
-    selector: 'app-header',
+    selector: 'website-header',
     templateUrl: './header.component.html',
     styleUrls: ['./header.component.scss'],
 })

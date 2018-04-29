@@ -1,23 +1,23 @@
 @import '../../variables';
 
-$topnav-background-color: #fff;
-:host {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+//$topnav-background-color: #fff;
+// :host {
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
     
     .navbar {
-        //width:100%;
-        width : $media-screen-m;
-        background:none !important;
+        
+        //width : $media-screen-m;
+        //background:none !important;
 
-        @media(max-width: 34em) {
+        //@media(max-width: 34em) {
             //background: black !important;
-        }
+        //}
 
         .navbar-toggler {
             cursor:pointer;
-            outline:0;
+            outline:0;   
         }
 
         .nav-link {
@@ -40,4 +40,4 @@ $topnav-background-color: #fff;
             }
         }
     }
-}
+//}
