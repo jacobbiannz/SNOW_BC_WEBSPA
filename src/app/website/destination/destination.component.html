@@ -73,7 +73,9 @@
                                 <a class="btn btn-link"  routerLink="/country/{{selectedCountry.id}}/provience/{{provience.id}}">{{provience.name}}</a>
                             </th>
                             <td>
-                                <a class="btn btn-link" *ngFor="let city of provience.cities" routerLink="/country/{{selectedCountry.id}}/provience-c/{{provience.id}}/city/{{city.id}}">{{city.name}}</a>
+                                <!-- <a class="btn btn-link" *ngFor="let city of provience.cities" routerLink="/country/{{selectedCountry.id}}/provience-c/{{provience.id}}/city/{{city.id}}">{{city.name}}</a> -->
+                                <a class="btn btn-link" *ngFor="let city of provience.cities" routerLink="/cities/{{city.id}}">{{city.name}}</a>
+                            
                             </td>
                         </tr>
                     </tbody>
@@ -88,7 +90,8 @@
                                 <a class="btn btn-link" routerLink="/country/{{selectedCountry.id}}/provience/{{provience.id}}">{{provience.name}}</a>
                             </th>
                             <td>
-                                <a class="btn btn-link" *ngFor="let city of provience.cities" routerLink="/country/{{selectedCountry.id}}/provience-c/{{provience.id}}/city/{{city.id}}">{{city.name}}</a>
+                                <!-- <a class="btn btn-link" *ngFor="let city of provience.cities" routerLink="/country/{{selectedCountry.id}}/provience-c/{{provience.id}}/city/{{city.id}}">{{city.name}}</a> -->
+                                <a class="btn btn-link" *ngFor="let city of provience.cities" routerLink="/cities/{{city.id}}">{{city.name}}</a>
                             </td>
                         </tr>
                     </tbody>
@@ -131,7 +134,7 @@
                             <div class="row">
                                 <div class="col-md-4" *ngFor="let city of month.topCities">
                                     <div class="image">
-                                        <img class="h-100" src= "http://localhost:61125/api/images/{{city.images[0].id}}" alt="picture----">
+                                        <img class="h-100" src= "http://localhost:61125/api/images/{{city.mainImageId}}" alt="picture----">
                                         <div class="monthcitytxt d-inline-block">{{city.name}}</div>
                                     </div>                                
                                 </div>                                  

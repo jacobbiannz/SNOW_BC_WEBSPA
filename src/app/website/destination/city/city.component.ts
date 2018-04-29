@@ -60,11 +60,11 @@ export class CityComponent implements OnInit {
   }
 
   getCity(){
-        let countryId = this.route.snapshot.paramMap.get('countryid')
-        let provienceId = this.route.snapshot.paramMap.get('provienceid');
+        //let countryId = this.route.snapshot.paramMap.get('countryid')
+        //let provienceId = this.route.snapshot.paramMap.get('provienceid');
         let cityId = this.route.snapshot.paramMap.get('cityid');
-console.log(cityId + "-----------------------------ttttt--------------------------------");
-        this.destinationService.getCity(countryId, provienceId, cityId).subscribe(city => {
+
+        this.destinationService.getCity(cityId).subscribe(city => {
             this.city = city;
         });
   }

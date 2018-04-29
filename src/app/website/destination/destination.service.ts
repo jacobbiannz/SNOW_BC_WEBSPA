@@ -67,13 +67,21 @@ export class DestinationService {
         });
     };
 
-    getCity(countryId : string, provienceId : string, cityId : string): Observable<ICity> {
-        this.cityUrl = "http://localhost:61125/api/countries/" + countryId + "/proviences/" + provienceId + "/cities/" + cityId;
-        return this.dataService.get(this.cityUrl).map((response: Response) => {
+    // getCity(countryId : string, provienceId : string, cityId : string): Observable<ICity> {
+    //     this.cityUrl = "http://localhost:61125/api/countries/" + countryId + "/proviences/" + provienceId + "/cities/" + cityId;
+    //     return this.dataService.get(this.cityUrl).map((response: Response) => {
            
-            return response.json();
-        });
-    };
+    //         return response.json();
+    //     });
+    // };
+
+    getCity(cityId : string): Observable<ICity> {
+            this.cityUrl = "http://localhost:61125/api/cities/" + cityId;
+            return this.dataService.get(this.cityUrl).map((response: Response) => {
+               
+                return response.json();
+            });
+        };
 
 
     getMonths(): Observable<IMonth[]> {

@@ -1,4 +1,5 @@
 export interface ICountry{
-    id : number;
+    id : string;
     name : string;
+    rate : number;
 }

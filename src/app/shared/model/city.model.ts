@@ -4,5 +4,5 @@ export interface ICity{
     id : number;
     name : string;
     rate : number;
-    images : IImage[];
+    mainImageId : number;
 }

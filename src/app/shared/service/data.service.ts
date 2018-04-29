@@ -34,10 +34,12 @@ export class DataService {
                 return res;
             }).catch(this.handleError);
     }
-/*
+
+    /*
     postWithId(url: string, data: any, params?: any): Observable<Response> {
         return this.doPost(url, data, true, params);
     }
+    */
 
     post(url: string, data: any, params?: any): Observable<Response> {
         return this.doPost(url, data, false, params);
@@ -46,13 +48,15 @@ export class DataService {
     putWithId(url: string, data: any, params?: any): Observable<Response> {
         return this.doPut(url, data, true, params);
     }
-*/
-/*
+
+
     private doPost(url: string, data: any, needId: boolean, params?: any): Observable<Response> {
         let options: RequestOptionsArgs = {};
 
         options.headers = new Headers();
-        
+        options.headers.append("Content-Type", "application/json");
+        options.headers.append("Accept", "application/json");
+
         // if (this.securityService) {
         //     options.headers.append('Authorization', 'Bearer ' + this.securityService.GetToken());
         // }
@@ -61,15 +65,16 @@ export class DataService {
         //     options.headers.append('x-requestid', guid);
         // }
         
-
+        console.log(data + '-------------------------dataservice--------------------------------');
         return this.http.post(url, data, options).map(
             (res: Response) => {
+                console.log(res + '-------------------------dataservice2--------------------------------');
                 return res;
             }).catch(this.handleError);
     }
-*/
 
-/*
+
+
     private doPut(url: string, data: any, needId: boolean, params?: any): Observable<Response> {
         let options: RequestOptionsArgs = {};
 
@@ -96,7 +101,7 @@ export class DataService {
                 return res;
             }).catch(this.handleError);
     }
-*/
+
 
 /*
     delete(url: string, params?: any) {
