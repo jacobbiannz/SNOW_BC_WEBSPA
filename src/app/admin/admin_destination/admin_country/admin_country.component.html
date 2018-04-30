@@ -17,33 +17,25 @@
                     [class.active]="isFirst" 
                     data-toggle="tab" role="tab">
                     <h6>{{country.name | uppercase}}</h6>
-                </a>
-
+                </a>    
+                
                 <a class="nav-item nav-link local-nav-link addbutton" data-toggle="tab" role="tab">
-                    <button type="button" class="btn btn-light" (click)="createNewCountry()">Add</button>
-                </a>
-               
+                    <button type="button" class="btn btn-dark" (click)="createNewCountry()">ADD</button>
+                </a>           
             </div>
-
-            
         </nav>
-        
-        
-        
-            
+
+        <div class="tab-content" id="nav-tabContent">   
         <div *ngIf="selectedCountry || newCountry" >
-        <!-- <div *ngIf="selectedCountry" > -->
         
-            <hr>
-            <h3>Reactive Forms</h3>
+            &nbsp;
             <!-- <h3>Editing: {{selectedCountry.name}}</h3> -->
             <admin-countrydetail [country]="selectedCountry" (onUpdate)="onRefresh($event)"></admin-countrydetail>
         
         
-            <p>heroForm value: {{ selectedCountry | json}} + {{now}}</p>
+            <!-- <p>heroForm value: {{ selectedCountry | json}} + {{now}}</p> -->
         </div>
-
-
+        </div>
     </div>
 </section>
     

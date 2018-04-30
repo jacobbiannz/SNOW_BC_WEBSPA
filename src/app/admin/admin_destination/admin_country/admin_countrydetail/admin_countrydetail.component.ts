@@ -61,6 +61,7 @@ export class Admin_CountryDetailComponent implements OnChanges {
         //this.country = this.prepareSaveCountry();
         //this.service.updateCategory(this.category).subscribe(/* error handling */);
         if(this.country != null){
+
             this.admin_destinationService.updateCountry(this.prepareSaveCountry()).subscribe(
                 country => {
                     this.onUpdate.emit(); 
@@ -69,7 +70,11 @@ export class Admin_CountryDetailComponent implements OnChanges {
         }        
 
         else{
-            this.admin_destinationService.createCountry(this.prepareSaveCountry()).subscribe();
+            this.admin_destinationService.createCountry(this.prepareSaveCountry()).subscribe(
+                country => {
+                    this.onUpdate.emit(); 
+                }
+            );
         }
         
         this.ngOnChanges();
@@ -86,7 +91,7 @@ export class Admin_CountryDetailComponent implements OnChanges {
         const saveCountry: ICountry = {
             id: this.id,
             name: formModel.name as string,
-            rate: this.rate
+            rate: formModel.rate as number
            
         };
         

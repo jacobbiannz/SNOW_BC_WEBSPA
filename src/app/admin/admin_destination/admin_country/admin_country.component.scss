@@ -7,16 +7,19 @@ a{
 
 .local-nav-link.active h6{
     
-        color: white !important;
-        background-color: $gray-500 !important;
+        //color: white !important;
+        //background-color: $gray-500 !important;
     
  }
 
- .addbutton{
-    // position: absolute;
-     right: 16px;
-   
+ .nav-tabs{
+     //display: flex;
+     .addbutton{
+        font-weight: bold;
+     }
  }
+
+
 
 h6{
     font-weight: bold;

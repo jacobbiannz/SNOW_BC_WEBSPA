@@ -31,7 +31,7 @@ export class AppComponent implements OnInit {
         //this.subscription = this.securityService.authenticationChallenge$.subscribe(res => this.Authenticated = res);
 
         //Get configuration from server environment variables:
-        console.log('configuration');
+        //console.log('configuration');
         this.configurationService.load();
     }
 

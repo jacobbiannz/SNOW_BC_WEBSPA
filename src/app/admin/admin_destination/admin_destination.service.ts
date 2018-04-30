@@ -13,6 +13,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/throw';
 import { Observer } from 'rxjs/Observer';
 import 'rxjs/add/operator/map';
+import { count } from 'rxjs/operators';
 
 @Injectable()
 export class Admin_DestinationService {
@@ -36,29 +37,39 @@ export class Admin_DestinationService {
     getCountries(): Observable<ICountry[]> {
         this.countryUrl = "http://localhost:61125/api/countries";
         return this.dataService.get(this.countryUrl).map((response: Response) => {
-            console.log(response.json() + '-------------------------country1------------------');
+            //console.log("----------------------------" + response.json() + "--------------------------");
             return response.json();
         });
     }
 
     updateCountry(country: ICountry): Observable<ICountry> {
-        let countryUrl = "http://localhost:61125/api/countries";
-        //this.category = category;
-        return this.dataService.putWithId(countryUrl, country).map((response: Response) => {
+        this.countryUrl = "http://localhost:61125/api/countries/" + country.id;
+        
+        return this.dataService.putWithId(this.countryUrl, country).map((response: Response) => {
             return response.json();
         });
        
     }
 
-    createCountry(country: ICountry): Observable<boolean> {
-        let countryUrl = "http://localhost:61125/api/countries";
+    // createCountry(country: ICountry): Observable<boolean> {
+    //     this.countryUrl = "http://localhost:61125/api/countries";
+    //     this.country = country;
+       
+    //     return this.dataService.post(this.countryUrl, country).map((response: Response) => {
+           
+    //         return true;
+    //     });
+    // }
+
+    createCountry(country: ICountry): Observable<ICountry> {
+        this.countryUrl = "http://localhost:61125/api/countries";
         this.country = country;
        
-        return this.dataService.post(countryUrl, country).map((response: Response) => {
-           
-            return true;
+        return this.dataService.post(this.countryUrl, country).map((response: Response) => {
+            return response.json();
         });
     }
+
 
 //----------------------------------------------------------------------------------------------------------
 

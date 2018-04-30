@@ -9,6 +9,7 @@ import { ConfigurationService } from '../../../shared/service/configuration.serv
 import { ICountry } from '../../../shared/model/country.model';
 import { ActivatedRoute } from '@angular/router';
 import { count } from 'rxjs/operators';
+import { Jsonp } from '@angular/http';
 
 
 @Component({
@@ -52,8 +53,9 @@ export class Admin_CountryComponent implements OnInit {
   }
 
     onRefresh(){
+        
         this.loadData();
-      
+        this.selectedCountry = null;
     }
 
     loadData() {
@@ -63,8 +65,7 @@ export class Admin_CountryComponent implements OnInit {
     getCountries() {
         this.admin_destinationService.getCountries().subscribe(countries => {
             this.countries = countries;
-
-            this.selectedCountry = this.countries[0];
+            //this.selectedCountry = this.countries[0];
         });
     
     }   
