@@ -45,21 +45,11 @@ export class Admin_DestinationService {
     updateCountry(country: ICountry): Observable<ICountry> {
         this.countryUrl = "http://localhost:61125/api/countries/" + country.id;
         
-        return this.dataService.putWithId(this.countryUrl, country).map((response: Response) => {
+        return this.dataService.putWithId(this.countryUrl, country).map((response: Response) => { 
             return response.json();
         });
        
     }
-
-    // createCountry(country: ICountry): Observable<boolean> {
-    //     this.countryUrl = "http://localhost:61125/api/countries";
-    //     this.country = country;
-       
-    //     return this.dataService.post(this.countryUrl, country).map((response: Response) => {
-           
-    //         return true;
-    //     });
-    // }
 
     createCountry(country: ICountry): Observable<ICountry> {
         this.countryUrl = "http://localhost:61125/api/countries";

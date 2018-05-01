@@ -52,10 +52,10 @@ export class Admin_CountryComponent implements OnInit {
         */
   }
 
-    onRefresh(){
-        
+    onRefresh(country : ICountry){
         this.loadData();
-        this.selectedCountry = null;
+        this.selectedCountry = country;
+        
     }
 
     loadData() {
@@ -65,13 +65,17 @@ export class Admin_CountryComponent implements OnInit {
     getCountries() {
         this.admin_destinationService.getCountries().subscribe(countries => {
             this.countries = countries;
-            //this.selectedCountry = this.countries[0];
+            if (this.selectedCountry == null)
+            {
+                this.selectedCountry = this.countries[0];
+            }
         });
     
     }   
 
     onSelectCountry(country : ICountry){
         this.selectedCountry = country;
+       
     }
 
     createNewCountry(){

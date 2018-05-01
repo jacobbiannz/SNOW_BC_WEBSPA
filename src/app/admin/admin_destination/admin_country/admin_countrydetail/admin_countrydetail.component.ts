@@ -64,7 +64,7 @@ export class Admin_CountryDetailComponent implements OnChanges {
 
             this.admin_destinationService.updateCountry(this.prepareSaveCountry()).subscribe(
                 country => {
-                    this.onUpdate.emit(); 
+                    this.onUpdate.emit(country); 
                 }
             );           
         }        
@@ -72,7 +72,8 @@ export class Admin_CountryDetailComponent implements OnChanges {
         else{
             this.admin_destinationService.createCountry(this.prepareSaveCountry()).subscribe(
                 country => {
-                    this.onUpdate.emit(); 
+                    this.onUpdate.emit(country); 
+                    //this.country = country;
                 }
             );
         }

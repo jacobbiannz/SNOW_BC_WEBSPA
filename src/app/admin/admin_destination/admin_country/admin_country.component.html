@@ -14,7 +14,7 @@
                 <a *ngFor="let country of countries; let isFirst = first" 
                     (click)="onSelectCountry(country)"
                     class="nav-item nav-link local-nav-link" 
-                    [class.active]="isFirst" 
+                    [class.active]="country.id==selectedCountry.id" 
                     data-toggle="tab" role="tab">
                     <h6>{{country.name | uppercase}}</h6>
                 </a>    
