@@ -40,7 +40,7 @@ export class DestinationService {
 
     }
 
-    getProviences(countryId : number): Observable<IProvience[]> {
+    getProviences(countryId : string): Observable<IProvience[]> {
 
         this.provienceUrl = "http://localhost:61125/api/countries/" + countryId + "/proviences";
         return this.dataService.get(this.provienceUrl).map((response: Response) => {

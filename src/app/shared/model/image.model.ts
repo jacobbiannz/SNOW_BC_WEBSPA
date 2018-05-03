@@ -1,5 +1,5 @@
 export interface IImage{
-    id : number;
+    id : string;
     name : string;
     isMainImage : boolean;
 }

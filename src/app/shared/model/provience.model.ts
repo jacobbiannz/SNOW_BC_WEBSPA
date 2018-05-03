@@ -1,7 +1,7 @@
 import { ICity } from "./city.model";
 
 export interface IProvience{
-    id : number;
+    id : string;
     name : string;
     cities : ICity[];
 }
