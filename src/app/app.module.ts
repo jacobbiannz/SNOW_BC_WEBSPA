@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './shared/shared.module';
+import { FacebookModule } from 'ngx-facebook';
 
 @NgModule({
  
@@ -20,6 +21,7 @@ import { SharedModule } from './shared/shared.module';
     NgbModule,
     NgbDropdownModule,
     SharedModule.forRoot(),
+    FacebookModule.forRoot(),
     
   ],
   declarations: [

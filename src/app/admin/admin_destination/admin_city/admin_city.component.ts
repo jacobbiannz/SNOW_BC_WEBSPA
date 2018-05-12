@@ -105,8 +105,15 @@ export class Admin_CityComponent implements OnInit {
         this.admin_destinationService.getCities(countryId, provienceId).subscribe(cities => {
             this.cities = cities;
         });
-
     }
+
+    getCity(cityId){
+        //let countryId = this.route.snapshot.paramMap.get('countryid')
+        //let provienceId = this.route.snapshot.paramMap.get('provienceid');
+        this.admin_destinationService.getCity(cityId).subscribe(city => {
+            this.selectedCity = city;
+        });
+  }
 
 
     onChangeCountry(countryId : any){
@@ -121,19 +128,10 @@ export class Admin_CityComponent implements OnInit {
         this.getCities(this.selectedCountryId, this.selectedProvienceId);
     }
 
-
-
-
-
-
-
-
-
-
-    onSelectCity(city : ICity){
-        this.selectedCity = city;
-       
+    onSelectCity(cityId : any){
+        this.getCity(cityId);
     }
+
 
     createNewCity(){
         this.newCity = true;

@@ -7,15 +7,12 @@
 </div> -->
 
 <section class="admincountries">
-    <div class="container">
+    <div>
         <h3><b>Country</b></h3>
         <hr>
     </div>
 
-    &nbsp;
-
-
-    <div class="container">
+    <div>
             <!-- <a *ngFor="let country of countries" (click)="select(country)">{{country.name}}</a> -->
         <nav>
             <div class="nav nav-tabs" id="nav-tab" role="tablist">
@@ -34,15 +31,15 @@
         </nav>
 
         <div class="tab-content" id="nav-tabContent">   
-        <div *ngIf="selectedCountry || newCountry" >
-        
-            &nbsp;
-            <!-- <h3>Editing: {{selectedCountry.name}}</h3> -->
-            <admin-countrydetail [country]="selectedCountry" (onUpdate)="onRefresh($event)"></admin-countrydetail>
-        
-        
-            <!-- <p>heroForm value: {{ selectedCountry | json}} + {{now}}</p> -->
-        </div>
+            <div *ngIf="selectedCountry || newCountry" >
+            
+                &nbsp;
+                <!-- <h3>Editing: {{selectedCountry.name}}</h3> -->
+                <admin-countrydetail [country]="selectedCountry" (onUpdate)="onRefresh($event)"></admin-countrydetail>
+            
+            
+                <!-- <p>heroForm value: {{ selectedCountry | json}} + {{now}}</p> -->
+            </div>
         </div>
     </div>
 </section>

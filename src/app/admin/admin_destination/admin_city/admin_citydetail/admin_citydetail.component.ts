@@ -4,27 +4,31 @@ import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
 import { ICountry } from '../../../../shared/model/country.model';
 import { Admin_DestinationService } from '../../admin_destination.service';
 import { Observable } from 'rxjs/Observable';
+import { CityComponent } from '../../../../website/destination/city/city.component';
+import { ICity } from '../../../../shared/model/city.model';
 
 @Component({
-    selector: 'admin-countrydetail',
+    selector: 'admin-citydetail',
     templateUrl: './admin_citydetail.component.html',
     styleUrls: ['./admin_citydetail.component.scss'],
    
 })
 
 export class Admin_CityDetailComponent implements OnChanges {
-    @Input() country: ICountry;
-    @Output() onUpdate = new EventEmitter<ICountry>();
+    @Input() city: ICity;
+    @Output() onUpdate = new EventEmitter<ICity>();
     
     id : string;
     name : string;
     rate : number;
 
     load(){
-        if(this.country != null){
-            this.id = this.country.id;
-            this.name = this.country.name;
-            this.rate = this.country.rate;
+        
+        if(this.city != null){
+            console.log('-------------------------------------------' + this.city.id);
+            this.id = this.city.id;
+            this.name = this.city.name;
+            this.rate = this.city.rate;
         }
         else
         {
@@ -33,7 +37,7 @@ export class Admin_CityDetailComponent implements OnChanges {
             this.rate = 0;
         }
     }
-    countryForm: FormGroup; // <--- heroForm is of type FormGroup
+    cityForm: FormGroup; // <--- heroForm is of type FormGroup
 
     constructor(private admin_destinationService: Admin_DestinationService, private fb: FormBuilder) { // <--- inject FormBuilder
         this.createForm();
@@ -41,7 +45,7 @@ export class Admin_CityDetailComponent implements OnChanges {
 
     
     createForm() {
-        this.countryForm = this.fb.group({
+        this.cityForm = this.fb.group({
             id:'',
             name:'',
             rate :''
@@ -50,54 +54,54 @@ export class Admin_CityDetailComponent implements OnChanges {
 
     ngOnChanges() {
         this.load();
-        this.countryForm.reset({ 
+        this.cityForm.reset({ 
             name: this.name,
             rate : this.rate
         });
         
     }
 
-    onSubmit() {
-        //this.country = this.prepareSaveCountry();
-        //this.service.updateCategory(this.category).subscribe(/* error handling */);
-        if(this.country != null){
+    // onSubmit() {
+    //     //this.country = this.prepareSaveCountry();
+    //     //this.service.updateCategory(this.category).subscribe(/* error handling */);
+    //     if(this.city != null){
 
-            this.admin_destinationService.updateCountry(this.prepareSaveCountry()).subscribe(
-                country => {
-                    this.onUpdate.emit(country); 
-                }
-            );           
-        }        
+    //         this.admin_destinationService.updateCity(this.prepareSaveCity()).subscribe(
+    //             city => {
+    //                 this.onUpdate.emit(city); 
+    //             }
+    //         );           
+    //     }        
 
-        else{
-            this.admin_destinationService.createCountry(this.prepareSaveCountry()).subscribe(
-                country => {
-                    this.onUpdate.emit(country); 
-                    //this.country = country;
-                }
-            );
-        }
+    //     else{
+    //         this.admin_destinationService.createCity(this.prepareSaveCity()).subscribe(
+    //             city => {
+    //                 this.onUpdate.emit(city); 
+    //                 //this.country = country;
+    //             }
+    //         );
+    //     }
         
-        this.ngOnChanges();
+    //     this.ngOnChanges();
         
        
-    }
+    // }
 
-    prepareSaveCountry(): ICountry {
-        const formModel = this.countryForm.value;
-        // return new `Hero` object containing a combination of original hero value(s)
-        // and deep copies of changed form model values
+    // prepareSaveCity(): ICity {
+    //     const formModel = this.cityForm.value;
+    //     // return new `Hero` object containing a combination of original hero value(s)
+    //     // and deep copies of changed form model values
     
 
-        const saveCountry: ICountry = {
-            id: this.id,
-            name: formModel.name as string,
-            rate: formModel.rate as number
+    //     const saveCity: ICity = {
+    //         id: this.id,
+    //         name: formModel.name as string,
+    //         rate: formModel.rate as number
            
-        };
+    //     };
         
-        return saveCountry;
-    }
+    //     return saveCity;
+    // }
 
     revert() { this.ngOnChanges(); }
 

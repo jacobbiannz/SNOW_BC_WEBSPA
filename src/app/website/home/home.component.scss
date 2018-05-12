@@ -19,30 +19,100 @@
     }
 }
 
-ol.carousel-indicators {
-    display: block;
-    right: 0;
-    left: 0;
-    top:10%;
-    bottom: 10%;
-    margin-right: 0%;
-    margin-left: 0%;
-    margin-top: 0%;
-    margin-bottom: 0%;
+//the following code is for display indicator on right with pic
+// ol.carousel-indicators {
+//     display: block;
+//     right: 0;
+//     left: 0;
+//     top:10%;
+//     bottom: 10%;
+//     margin-right: 0%;
+//     margin-left: 0%;
+//     margin-top: 0%;
+//     margin-bottom: 0%;
     
     
-    .IC{
-        @include aspect-ratio(16, 9);
-        left: 92%;
-        width: 6%;
-        margin-bottom: 1%;
-        background-color: rgba(255, 255, 255, 0.5);
-    }
+//     .IC{
+//         @include aspect-ratio(16, 9);
+//         left: 92%;
+//         width: 6%;
+//         margin-bottom: 1%;
+//         background-color: rgba(255, 255, 255, 0.5);
+//     }
 
-     .IC.active{
-        border: rgba(255, 187, 0, 0.74) 3px solid;
-    }
+//      .IC.active{
+//         border: rgba(255, 187, 0, 0.74) 3px solid;
+//     }
+// }
+
+.carousel{
+    .car-ind-txt{ 
+            
+            color:white;
+            margin:auto;
+            z-index: 16;
+            font-size: $display1-size * 1.25;
+            font-weight: $headings-font-weight;
+            //margin: 0;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+
+        }
+    
+    //background-color: grey;
 }
+
+// .carousel-fade .carousel-inner .carousel-item {
+//     opacity: 0.5;
+//     //transition-property: opacity;
+//     -webkit-transition: opacity .3s ease-in-out;
+//     transition: opacity .3s ease-in-out;
+//   }
+  
+//   .carousel-fade .carousel-inner .active {
+//     opacity: 1;
+//   }
+  
+//   .carousel-fade .carousel-inner .active.left,
+//   .carousel-fade .carousel-inner .active.right {
+//     left: 0;
+//     opacity: 0;
+//     z-index: 1;
+//   }
+  
+//   .carousel-fade .carousel-inner .next.left,
+//   .carousel-fade .carousel-inner .prev.right {
+//     opacity: 1;
+//   }
+  
+//   .carousel-fade .carousel-control {
+//     z-index: 2;
+//   } 
+//   @media all and (transform-3d), (-webkit-transform-3d) {
+//       .carousel-fade .carousel-inner > .carousel-item.next,
+//       .carousel-fade .carousel-inner > .itcarousel-itemem.active.right {
+//         opacity: 0;
+//         -webkit-transform: translate3d(0, 0, 0);
+//                 transform: translate3d(0, 0, 0);
+//       }
+//       .carousel-fade .carousel-inner > .carousel-item.prev,
+//       .carousel-fade .carousel-inner > .carousel-item.active.left {
+//         opacity: 0;
+//         -webkit-transform: translate3d(0, 0, 0);
+//                 transform: translate3d(0, 0, 0);
+//       }
+//       .carousel-fade .carousel-inner > .carousel-item.next.left,
+//       .carousel-fade .carousel-inner > .carousel-item.prev.right,
+//       .carousel-fade .carousel-inner > .carousel-item.active {
+//         opacity: 1;
+//         -webkit-transform: translate3d(0, 0, 0);
+//                 transform: translate3d(0, 0, 0);
+//       }
+//   } 
+
 
 @mixin aspect-ratio2($width, $height) {
     position: relative;
@@ -64,7 +134,8 @@ ol.carousel-indicators {
 
 .carousel-inner{
     width: 100%;
-    @include aspect-ratio2(15, 5);
+    //@include aspect-ratio2(15, 5);
+    @include aspect-ratio2(16, 7);
 
     .carousel-caption{
         margin: auto;
@@ -75,31 +146,42 @@ ol.carousel-indicators {
         padding: 16px;
         max-width: $media-screen-m;
         text-align: left; 
+        z-index: 2;
     }
 
 }
 
 .homemain{
-    width: $media-screen-m; 
+    //width: $media-screen-m; 
     margin: auto;
     //padding: 16px;
-    background-color: rgb(22, 21, 21);
+    //background-color: rgb(22, 21, 21);
 
     .homemainc1{
-        padding: 16px;
+        //padding: 16px;
         
-        background-color: pink;
+        //background-color: pink;
         //margin: 16px;
     }
 
 
     .homemainc2{
        
-        padding: 16px 0px;
-        background-color: paleturquoise;
+        //padding: 16px 0px;
+        //background-color: paleturquoise;
         
-        @media screen and (max-width: $media-screen-s){
-            padding:16px; 
-        }
+        //@media screen and (max-width: $media-screen-s){
+            //padding:16px; 
+        //}
     }
+}
+
+.desc{
+    color: gray;
+
+    .p0{
+        margin: auto;
+        text-align: center;
+    }
+    
 }

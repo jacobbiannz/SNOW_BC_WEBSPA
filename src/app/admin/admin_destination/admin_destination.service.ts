@@ -81,7 +81,10 @@ export class Admin_DestinationService {
         });
     };
 
+
+
     
+//----------------------------------------------------------------------------------------------------------
     getCities(countryId : string, provienceId : string): Observable<ICity[]> {
         this.cityUrl = "http://localhost:61125/api/countries/" + countryId + "/proviences/" + provienceId + "/cities";
         return this.dataService.get(this.cityUrl).map((response: Response) => {
@@ -98,6 +101,7 @@ export class Admin_DestinationService {
     //     });
     // };
 
+
     getCity(cityId : string): Observable<ICity> {
         this.cityUrl = "http://localhost:61125/api/cities/" + cityId;
         return this.dataService.get(this.cityUrl).map((response: Response) => {
@@ -105,6 +109,31 @@ export class Admin_DestinationService {
             return response.json();
         });
     };
+ 
+    // updateCity(country: ICountry): Observable<ICountry> {
+    //     this.countryUrl = "http://localhost:61125/api/countries/" + country.id;
+        
+    //     return this.dataService.putWithId(this.countryUrl, country).map((response: Response) => { 
+    //         return response.json();
+    //     });
+       
+    // }
+
+    // createCity(country: ICountry): Observable<ICountry> {
+    //     this.countryUrl = "http://localhost:61125/api/countries";
+    //     this.country = country;
+       
+    //     return this.dataService.post(this.countryUrl, country).map((response: Response) => {
+    //         return response.json();
+    //     });
+    // }
+
+
+
+
+
+
+//----------------------------------------------------------------------------------------------------------
 
 
     getMonths(): Observable<IMonth[]> {
