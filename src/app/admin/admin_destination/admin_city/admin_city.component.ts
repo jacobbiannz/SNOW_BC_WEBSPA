@@ -15,6 +15,7 @@ import { Jsonp } from '@angular/http';
 import { ICountry } from '../../../shared/model/country.model';
 import { IProvience } from '../../../shared/model/provience.model';
 import { ICity } from '../../../shared/model/city.model';
+import { connectableObservableDescriptor } from 'rxjs/observable/ConnectableObservable';
 
 
 
@@ -73,6 +74,7 @@ export class Admin_CityComponent implements OnInit {
         this.loadData();
         this.selectedCity = city;
         
+        
     }
 
     loadData() {
@@ -112,6 +114,7 @@ export class Admin_CityComponent implements OnInit {
         //let provienceId = this.route.snapshot.paramMap.get('provienceid');
         this.admin_destinationService.getCity(cityId).subscribe(city => {
             this.selectedCity = city;
+           
         });
   }
 

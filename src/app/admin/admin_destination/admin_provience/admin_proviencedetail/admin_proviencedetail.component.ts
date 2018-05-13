@@ -4,36 +4,21 @@ import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
 import { ICountry } from '../../../../shared/model/country.model';
 import { Admin_DestinationService } from '../../admin_destination.service';
 import { Observable } from 'rxjs/Observable';
+import { IProvience } from '../../../../shared/model/provience.model';
 
 @Component({
-    selector: 'admin-countrydetail',
+    selector: 'admin-proviencedetail',
     templateUrl: './admin_proviencedetail.component.html',
     styleUrls: ['./admin_proviencedetail.component.scss'],
    
 })
 
 export class Admin_ProvienceDetailComponent implements OnChanges {
-    @Input() country: ICountry;
-    @Output() onUpdate = new EventEmitter<ICountry>();
+    @Input() provience: IProvience;
+    @Input() countryId: string;
+    @Output() onUpdate = new EventEmitter<IProvience>();
     
-    id : string;
-    name : string;
-    rate : number;
-
-    load(){
-        if(this.country != null){
-            this.id = this.country.id;
-            this.name = this.country.name;
-            this.rate = this.country.rate;
-        }
-        else
-        {
-            this.id = '';
-            this.name = '';
-            this.rate = 0;
-        }
-    }
-    countryForm: FormGroup; // <--- heroForm is of type FormGroup
+    provienceForm: FormGroup;
 
     constructor(private admin_destinationService: Admin_DestinationService, private fb: FormBuilder) { // <--- inject FormBuilder
         this.createForm();
@@ -41,7 +26,7 @@ export class Admin_ProvienceDetailComponent implements OnChanges {
 
     
     createForm() {
-        this.countryForm = this.fb.group({
+        this.provienceForm = this.fb.group({
             id:'',
             name:'',
             rate :''
@@ -49,56 +34,62 @@ export class Admin_ProvienceDetailComponent implements OnChanges {
     }
 
     ngOnChanges() {
-        this.load();
-        this.countryForm.reset({ 
-            name: this.name,
-            rate : this.rate
-        });
+        this.rebuildForm();
+    }
+     
+    rebuildForm() {
         
+        this.provienceForm.reset(
+            {
+            name: this.provience.name,
+            rate: this.provience.rate
+            }
+        );
+       
     }
 
     onSubmit() {
-        //this.country = this.prepareSaveCountry();
-        //this.service.updateCategory(this.category).subscribe(/* error handling */);
-        if(this.country != null){
+        this.provience = this.prepareSaveProviencve();
+        if(this.provience != null){
 
-            this.admin_destinationService.updateCountry(this.prepareSaveCountry()).subscribe(
-                country => {
-                    this.onUpdate.emit(country); 
+            this.admin_destinationService.updateProvience(this.countryId, this.prepareSaveProviencve()).subscribe(
+                provience => {
+                    this.onUpdate.emit(provience); 
+                    //this.provience = provience;
                 }
             );           
         }        
 
         else{
-            this.admin_destinationService.createCountry(this.prepareSaveCountry()).subscribe(
-                country => {
-                    this.onUpdate.emit(country); 
-                    //this.country = country;
+            this.admin_destinationService.createProvience(this.countryId, this.prepareSaveProviencve()).subscribe(
+                provience => {
+                    this.onUpdate.emit(provience); 
+                    //this.provience = provience;
                 }
             );
         }
-        
-        this.ngOnChanges();
-        
-       
+
+        this.rebuildForm();
     }
 
-    prepareSaveCountry(): ICountry {
-        const formModel = this.countryForm.value;
-        // return new `Hero` object containing a combination of original hero value(s)
-        // and deep copies of changed form model values
-    
+    prepareSaveProviencve(): IProvience {
+        const formModel = this.provienceForm.value;
 
-        const saveCountry: ICountry = {
-            id: this.id,
+        const saveProvience: IProvience = {
+            id: this.provience.id,
             name: formModel.name as string,
-            rate: formModel.rate as number
+            rate: formModel.rate as number,
+            cities:null
            
         };
         
-        return saveCountry;
+        return saveProvience;
     }
 
-    revert() { this.ngOnChanges(); }
+    revert(ev) { 
+        ev.preventDefault();
+        this.rebuildForm(); 
+      
+    }
 
 }

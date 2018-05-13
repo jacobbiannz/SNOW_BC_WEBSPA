@@ -35,7 +35,7 @@
     
                     <!-- &nbsp; -->
                     <!-- <h3>Editing: {{selectedCountry.name}}</h3> -->
-                    <admin-citydetail [city]="selectedCity" (onUpdate)="onRefresh($event)"></admin-citydetail>
+                    <admin-citydetail [city]="selectedCity" [countryId]="selectedCountryId" [provienceId]="selectedProvienceId" (onUpdate)="onRefresh($event)"></admin-citydetail>
                 
                 
                     <!-- <p>heroForm value: {{ selectedCountry | json}} + {{now}}</p> -->

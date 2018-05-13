@@ -1,4 +1,4 @@
-﻿<form [formGroup]="countryForm" (ngSubmit)="onSubmit()" novalidate>
+﻿<form [formGroup]="provienceForm" (ngSubmit)="onSubmit()" novalidate>
     
 
     <!-- Hero Detail Controls -->
@@ -19,12 +19,12 @@
 
     <div style="margin-bottom: 1em">
         <button type="submit"
-                [disabled]="countryForm.pristine" class="btn btn-dark">
+                [disabled]="provienceForm.pristine" class="btn btn-dark">
             Save
         </button>
          &nbsp;
-        <button type="reset" (click)="revert()"
-                [disabled]="countryForm.pristine" class="btn btn-secondary">
+        <button type="reset" (click)="revert($event)"
+                [disabled]="provienceForm.pristine" class="btn btn-secondary">
             Revert
         </button>
     </div>

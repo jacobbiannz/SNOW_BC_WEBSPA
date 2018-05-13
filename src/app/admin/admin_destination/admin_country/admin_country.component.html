@@ -24,7 +24,7 @@
                     <h6>{{country.name | uppercase}}</h6>
                 </a>    
                 
-                <a class="nav-item nav-link local-nav-link addbutton" data-toggle="tab" role="tab">
+                <a class="nav-item nav-link local-nav-link addbutton" *ngIf="countries" data-toggle="tab" role="tab">
                     <button type="button" class="btn btn-dark" (click)="createNewCountry()">ADD</button>
                 </a>           
             </div>

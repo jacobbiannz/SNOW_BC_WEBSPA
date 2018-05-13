@@ -23,7 +23,7 @@
             Save
         </button>
          &nbsp;
-        <button type="reset" (click)="revert()"
+        <button type="reset" (click)="revert($event)"
                 [disabled]="cityForm.pristine" class="btn btn-secondary">
             Revert
         </button>

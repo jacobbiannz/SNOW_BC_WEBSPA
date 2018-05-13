@@ -9,12 +9,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './shared/shared.module';
 import { FacebookModule } from 'ngx-facebook';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
  
   imports: [
     BrowserModule,
     CommonModule,
+    FormsModule,
     HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,

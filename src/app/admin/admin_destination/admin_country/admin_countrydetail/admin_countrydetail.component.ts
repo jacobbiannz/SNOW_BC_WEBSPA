@@ -58,7 +58,7 @@ export class Admin_CountryDetailComponent implements OnChanges {
     }
 
     onSubmit() {
-        //this.country = this.prepareSaveCountry();
+        this.country = this.prepareSaveCountry();
         //this.service.updateCategory(this.category).subscribe(/* error handling */);
         if(this.country != null){
 
@@ -99,6 +99,9 @@ export class Admin_CountryDetailComponent implements OnChanges {
         return saveCountry;
     }
 
-    revert() { this.ngOnChanges(); }
+    revert(ev) { 
+        ev.preventDefault();
+        this.ngOnChanges(); 
+    }
 
 }

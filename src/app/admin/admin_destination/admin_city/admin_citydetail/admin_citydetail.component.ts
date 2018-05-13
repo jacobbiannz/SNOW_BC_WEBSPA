@@ -6,6 +6,8 @@ import { Admin_DestinationService } from '../../admin_destination.service';
 import { Observable } from 'rxjs/Observable';
 import { CityComponent } from '../../../../website/destination/city/city.component';
 import { ICity } from '../../../../shared/model/city.model';
+import { ProvienceRoutingModule } from '../../../../website/destination/provience/provience-routing.module';
+import { NumberSymbol } from '@angular/common';
 
 @Component({
     selector: 'admin-citydetail',
@@ -16,28 +18,12 @@ import { ICity } from '../../../../shared/model/city.model';
 
 export class Admin_CityDetailComponent implements OnChanges {
     @Input() city: ICity;
-    @Output() onUpdate = new EventEmitter<ICity>();
-    
-    id : string;
-    name : string;
-    rate : number;
+    @Input() countryId: string;
+    @Input() provienceId: string;
 
-    load(){
-        
-        if(this.city != null){
-            console.log('-------------------------------------------' + this.city.id);
-            this.id = this.city.id;
-            this.name = this.city.name;
-            this.rate = this.city.rate;
-        }
-        else
-        {
-            this.id = '';
-            this.name = '';
-            this.rate = 0;
-        }
-    }
-    cityForm: FormGroup; // <--- heroForm is of type FormGroup
+    @Output() onUpdate = new EventEmitter<ICity>();
+
+    cityForm: FormGroup; 
 
     constructor(private admin_destinationService: Admin_DestinationService, private fb: FormBuilder) { // <--- inject FormBuilder
         this.createForm();
@@ -53,56 +39,64 @@ export class Admin_CityDetailComponent implements OnChanges {
     }
 
     ngOnChanges() {
-        this.load();
-        this.cityForm.reset({ 
-            name: this.name,
-            rate : this.rate
-        });
-        
+        this.rebuildForm();
     }
 
-    // onSubmit() {
-    //     //this.country = this.prepareSaveCountry();
-    //     //this.service.updateCategory(this.category).subscribe(/* error handling */);
-    //     if(this.city != null){
-
-    //         this.admin_destinationService.updateCity(this.prepareSaveCity()).subscribe(
-    //             city => {
-    //                 this.onUpdate.emit(city); 
-    //             }
-    //         );           
-    //     }        
-
-    //     else{
-    //         this.admin_destinationService.createCity(this.prepareSaveCity()).subscribe(
-    //             city => {
-    //                 this.onUpdate.emit(city); 
-    //                 //this.country = country;
-    //             }
-    //         );
-    //     }
-        
-    //     this.ngOnChanges();
-        
+    rebuildForm() {
        
-    // }
+        this.cityForm.reset(
+            {
+            name: this.city.name,
+            rate: this.city.rate
+            }
+        );
+       
+    }
 
-    // prepareSaveCity(): ICity {
-    //     const formModel = this.cityForm.value;
-    //     // return new `Hero` object containing a combination of original hero value(s)
-    //     // and deep copies of changed form model values
-    
+    onSubmit() {
+        this.city = this.prepareSaveCity();
+        //this.service.updateCategory(this.category).subscribe(/* error handling */);
+        if(this.city != null){
 
-    //     const saveCity: ICity = {
-    //         id: this.id,
-    //         name: formModel.name as string,
-    //         rate: formModel.rate as number
-           
-    //     };
+            this.admin_destinationService.updateCity(this.countryId, this.provienceId, this.prepareSaveCity()).subscribe(
+                city => {
+                    this.onUpdate.emit(city); 
+                }
+            );           
+        }        
+
+        else{
+            this.admin_destinationService.createCity(this.countryId, this.provienceId, this.prepareSaveCity()).subscribe(
+                city => {
+                    this.onUpdate.emit(city); 
+                    //this.country = country;
+                }
+            );
+        }
         
-    //     return saveCity;
-    // }
+        this.rebuildForm();
+    }
 
-    revert() { this.ngOnChanges(); }
+    prepareSaveCity(): ICity {
+        const formModel = this.cityForm.value;
+        // return new `Hero` object containing a combination of original hero value(s)
+        // and deep copies of changed form model values
+    
+        const saveCity: ICity = {
+            id: this.city.id,
+            name: formModel.name as string,
+            rate: formModel.rate as number,
+            mainImageId : this.city.mainImageId
+        };
+        
+        return saveCity;
+    }
+
+    revert(ev) { 
+        ev.preventDefault();
+        this.rebuildForm(); 
+      
+    }
+
 
 }

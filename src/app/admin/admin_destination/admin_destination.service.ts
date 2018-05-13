@@ -14,6 +14,7 @@ import 'rxjs/add/observable/throw';
 import { Observer } from 'rxjs/Observer';
 import 'rxjs/add/operator/map';
 import { count } from 'rxjs/operators';
+import { ProvienceModule } from '../../website/destination/provience/provience.module';
 
 @Injectable()
 export class Admin_DestinationService {
@@ -23,6 +24,8 @@ export class Admin_DestinationService {
     private monthUrl: string ='';
 
     country: ICountry;
+    provience : IProvience;
+    city : ICity;
 
     constructor(private dataService: DataService, private configurationService: ConfigurationService) {
         this.configurationService.settingsLoaded$.subscribe(x => {
@@ -81,7 +84,23 @@ export class Admin_DestinationService {
         });
     };
 
+    updateProvience(countryId : string, provience: IProvience): Observable<IProvience> {
+       
+        this.provienceUrl = "http://localhost:61125/api/countries/" + countryId + "/proviences/" + provience.id;
+        return this.dataService.putWithId(this.provienceUrl, provience).map((response: Response) => { 
+            return response.json();
+        });
+       
+    }
 
+    createProvience(countryId : string, provience: IProvience): Observable<IProvience> {
+        this.provienceUrl = "http://localhost:61125/api/countries/" + countryId + "/proviences";
+        this.provience = provience;
+       
+        return this.dataService.post(this.provienceUrl, provience).map((response: Response) => {
+            return response.json();
+        });
+    }
 
     
 //----------------------------------------------------------------------------------------------------------
@@ -110,29 +129,22 @@ export class Admin_DestinationService {
         });
     };
  
-    // updateCity(country: ICountry): Observable<ICountry> {
-    //     this.countryUrl = "http://localhost:61125/api/countries/" + country.id;
-        
-    //     return this.dataService.putWithId(this.countryUrl, country).map((response: Response) => { 
-    //         return response.json();
-    //     });
+    updateCity(countryId : string, provienceId: string, city: ICity): Observable<ICity> {
        
-    // }
+        this.cityUrl = "http://localhost:61125/api/countries/" + countryId + "/proviences/" + provienceId + "/cities/" + city.id;
+        return this.dataService.putWithId(this.cityUrl, city).map((response: Response) => { 
+            return response.json();
+        });
+    }
 
-    // createCity(country: ICountry): Observable<ICountry> {
-    //     this.countryUrl = "http://localhost:61125/api/countries";
-    //     this.country = country;
+    createCity(countryId : string, provienceId: string, city: ICity): Observable<ICity> {
+        this.cityUrl = "http://localhost:61125/api/countries/" + countryId + "/proviences/" + provienceId + "/cities/" + city.id;
+        this.city = city;
        
-    //     return this.dataService.post(this.countryUrl, country).map((response: Response) => {
-    //         return response.json();
-    //     });
-    // }
-
-
-
-
-
-
+        return this.dataService.post(this.cityUrl, city).map((response: Response) => {
+            return response.json();
+        });
+    }
 //----------------------------------------------------------------------------------------------------------
 
 
