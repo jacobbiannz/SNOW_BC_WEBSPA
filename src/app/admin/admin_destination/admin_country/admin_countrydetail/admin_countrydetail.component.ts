@@ -58,18 +58,24 @@ export class Admin_CountryDetailComponent implements OnChanges {
     }
 
     onSubmit() {
-        //this.country = this.prepareSaveCountry();
+        this.country = this.prepareSaveCountry();
         //this.service.updateCategory(this.category).subscribe(/* error handling */);
         if(this.country != null){
+
             this.admin_destinationService.updateCountry(this.prepareSaveCountry()).subscribe(
                 country => {
-                    this.onUpdate.emit(); 
+                    this.onUpdate.emit(country); 
                 }
             );           
         }        
 
         else{
-            this.admin_destinationService.createCountry(this.prepareSaveCountry()).subscribe();
+            this.admin_destinationService.createCountry(this.prepareSaveCountry()).subscribe(
+                country => {
+                    this.onUpdate.emit(country); 
+                    //this.country = country;
+                }
+            );
         }
         
         this.ngOnChanges();
@@ -86,13 +92,16 @@ export class Admin_CountryDetailComponent implements OnChanges {
         const saveCountry: ICountry = {
             id: this.id,
             name: formModel.name as string,
-            rate: this.rate
+            rate: formModel.rate as number
            
         };
         
         return saveCountry;
     }
 
-    revert() { this.ngOnChanges(); }
+    revert(ev) { 
+        ev.preventDefault();
+        this.ngOnChanges(); 
+    }
 
 }

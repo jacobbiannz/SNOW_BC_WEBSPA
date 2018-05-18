@@ -30,7 +30,7 @@ export class DataService {
         //console.log("----------------------------dataservice--" + url + "--dataservice------------------------");
         return this.http.get(url, options).map(
             (res: Response) => {
-                //console.log("----------------------------dataservicereturn--" + res + "--dataservice------------------------");
+                //console.log("----------------------------dataservicereturn--" +res+ "--dataservice------------------------");
                 return res;
             }).catch(this.handleError);
     }
@@ -46,7 +46,8 @@ export class DataService {
     }
 
     putWithId(url: string, data: any, params?: any): Observable<Response> {
-        return this.doPut(url, data, true, params);
+        
+        return this.doPut(url, data, false, params);
     }
 
 
@@ -65,10 +66,9 @@ export class DataService {
         //     options.headers.append('x-requestid', guid);
         // }
         
-        console.log(data + '-------------------------dataservice--------------------------------');
+       
         return this.http.post(url, data, options).map(
             (res: Response) => {
-                console.log(res + '-------------------------dataservice2--------------------------------');
                 return res;
             }).catch(this.handleError);
     }
@@ -81,7 +81,7 @@ export class DataService {
         options.headers = new Headers();
         options.headers.append("Content-Type", "application/json");
         options.headers.append("Accept", "application/json");
-   
+
         //options.headers.append('Access-Control-Allow-Headers', 'Content-Type'); 
 
         
@@ -94,8 +94,9 @@ export class DataService {
         //     options.headers.append('x-requestid', guid);
         // }
         
-
+       
         //console.log(options);
+        //console.log(options +'------------------------here2---------------------' + JSON.stringify(data));
         return this.http.put(url, data, options).map(
             (res: Response) => {
                 return res;

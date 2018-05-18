@@ -12,6 +12,10 @@ const routes: Routes = [
             { path: 'admindashboard',  loadChildren: './admin_dashboard/admin_dashboard.module#Admin_DashboardModule' },
             { path: 'admindestination',  loadChildren: './admin_destination/admin_destination.module#Admin_DestinationModule' },
             { path: 'admincountries',  loadChildren: './admin_destination/admin_country/admin_country.module#Admin_CountryModule' },
+            { path: 'adminproviences',  loadChildren: './admin_destination/admin_provience/admin_provience.module#Admin_ProvienceModule' },
+            { path: 'admincities',  loadChildren: './admin_destination/admin_city/admin_city.module#Admin_CityModule' },
+            
+
             //{ path: '', redirectTo: 'home', pathMatch: 'full' },
             //{ path: 'home', loadChildren: './home/home.module#HomeModule' },
             //{ path: 'destination', loadChildren: './destination/destination.module#DestinationModule' },

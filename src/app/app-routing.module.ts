@@ -7,10 +7,7 @@ const routes: Routes = [
     { path: 'admin', loadChildren: './admin/admin.module#AdminModule'}, //jacob-
     { path: '', loadChildren: './website/website.module#WebsiteModule'}, //jacob-
     //{ path: '', loadChildren: './admin/admin.module#AdminModule'}, //jacob-
-   
     
-   
-
     //{ path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule'},
     //{ path: 'catalogattributes',  loadChildren: './catalog/catalogAttributes/catalogAttributes.module#CatalogAttributesModule'},
     /*

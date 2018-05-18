@@ -30,7 +30,9 @@
                             <a class="btn btn-link"  routerLink="/country/{{selectedCountry.id}}/provience/{{provience.id}}">{{provience.name}}</a>
                         </th>
                         <td>
-                            <a class="btn btn-link" *ngFor="let city of provience.cities" routerLink="/cities/{{city.id}}">{{city.name}}</a>
+                                
+                            <a class="btn btn-link" *ngFor="let city of provience.cities" routerLink="/admin/admincities">{{city.name}}</a>
+                            <!-- <a class="btn btn-link" *ngFor="let city of provience.cities" routerLink="/cities/{{city.id}}">{{city.name}}</a> -->
                         </td>
                     </tr>
                 </tbody>

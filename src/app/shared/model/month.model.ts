@@ -1,7 +1,7 @@
 import { ICity } from "./city.model";
 
 export interface IMonth{
-    id : number;
+    id : string;
     name : string;
     topCities :ICity[];
 }

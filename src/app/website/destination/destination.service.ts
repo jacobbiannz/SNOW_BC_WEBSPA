@@ -40,7 +40,7 @@ export class DestinationService {
 
     }
 
-    getProviences(countryId : number): Observable<IProvience[]> {
+    getProviences(countryId : string): Observable<IProvience[]> {
 
         this.provienceUrl = "http://localhost:61125/api/countries/" + countryId + "/proviences";
         return this.dataService.get(this.provienceUrl).map((response: Response) => {
@@ -88,7 +88,7 @@ export class DestinationService {
         //console.log(this.countryUrl + '-----------------------country url-------------------------------');
         this.monthUrl = "http://localhost:61125/api/monthcollection";
         return this.dataService.get(this.monthUrl).map((response: Response) => {
-            console.log(response.json() + '-----------------------months-------------------------------');
+            //console.log(response.json() + '-----------------------months-------------------------------');
             return response.json();
         });
 
