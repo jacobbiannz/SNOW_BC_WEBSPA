@@ -2,7 +2,7 @@ import { Component, OnInit, Input, Output, OnChanges, EventEmitter } from '@angu
 //import { Input } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
 
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { Time } from '@angular/common/src/i18n/locale_data_api';
 
 import { Admin_DestinationService } from '../admin_destination.service';

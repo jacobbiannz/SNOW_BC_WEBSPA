@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 //import { routerTransition } from '../../router.animations';
 import { Time } from '@angular/common/src/i18n/locale_data_api';
 

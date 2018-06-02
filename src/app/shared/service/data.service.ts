@@ -1,12 +1,13 @@
+
+import {throwError as observableThrowError,  Observable ,  Observer } from 'rxjs';
+
+import {map, catchError} from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { Http, Response, RequestOptionsArgs, RequestMethod, Headers } from '@angular/http';
 
 import 'rxjs/Rx';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/observable/throw';
-import { Observer } from 'rxjs/Observer';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
+
+
 
 //import { Guid } from '../../../guid';
 //import { SecurityService } from './security.service';
@@ -28,11 +29,11 @@ export class DataService {
         // }
         options.headers = new Headers();
         //console.log("----------------------------dataservice--" + url + "--dataservice------------------------");
-        return this.http.get(url, options).map(
+        return this.http.get(url, options).pipe(map(
             (res: Response) => {
                 //console.log("----------------------------dataservicereturn--" +res+ "--dataservice------------------------");
                 return res;
-            }).catch(this.handleError);
+            }),catchError(this.handleError),);
     }
 
     /*
@@ -67,10 +68,10 @@ export class DataService {
         // }
         
        
-        return this.http.post(url, data, options).map(
+        return this.http.post(url, data, options).pipe(map(
             (res: Response) => {
                 return res;
-            }).catch(this.handleError);
+            }),catchError(this.handleError),);
     }
 
 
@@ -97,10 +98,10 @@ export class DataService {
        
         //console.log(options);
         //console.log(options +'------------------------here2---------------------' + JSON.stringify(data));
-        return this.http.put(url, data, options).map(
+        return this.http.put(url, data, options).pipe(map(
             (res: Response) => {
                 return res;
-            }).catch(this.handleError);
+            }),catchError(this.handleError),);
     }
 
 
@@ -134,8 +135,8 @@ export class DataService {
             } catch (error) {
                 errMessage = error.statusText;
             }
-            return Observable.throw(errMessage);
+            return observableThrowError(errMessage);
         }
-        return Observable.throw(error || 'server error');
+        return observableThrowError(error || 'server error');
     }
 }

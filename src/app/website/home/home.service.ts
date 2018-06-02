@@ -1,3 +1,5 @@
+
+import {map} from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { Response } from '@angular/http';
 
@@ -9,10 +11,8 @@ import { ICountry } from '../../shared/model/country.model';
 import { IMonth } from '../../shared/model/month.model';
 
 import 'rxjs/Rx';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/observable/throw';
-import { Observer } from 'rxjs/Observer';
-import 'rxjs/add/operator/map';
+import { Observable ,  Observer } from 'rxjs';
+
 
 @Injectable()
 export class HomeService {
@@ -33,10 +33,10 @@ export class HomeService {
     getCountries(): Observable<ICountry[]> {
         //console.log(this.countryUrl + '-----------------------country url-------------------------------');
         this.countryUrl = "http://localhost:61125/api/countries";
-        return this.dataService.get(this.countryUrl).map((response: Response) => {
+        return this.dataService.get(this.countryUrl).pipe(map((response: Response) => {
             //console.log(response.json() + '-----------------------countres-------------------------------');
             return response.json();
-        });
+        }));
 
     }
 

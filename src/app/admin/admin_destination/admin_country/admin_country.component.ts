@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 //import { Input } from '@angular/core';
 
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { Time } from '@angular/common/src/i18n/locale_data_api';
 
 import { Admin_DestinationService } from '../admin_destination.service';

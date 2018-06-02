@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IProvience } from '../../../shared/model/provience.model';
 //import { Input } from '@angular/core';
 
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { Time } from '@angular/common/src/i18n/locale_data_api';
 
 import { DestinationService } from '../destination.service';
